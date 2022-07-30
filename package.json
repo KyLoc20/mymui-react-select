@@ -1,0 +1,49 @@
+{
+    "name": "@kyloc20/mymui-react-select",
+    "version": "0.1.0",
+    "description": "a Select UI component made with react&typescript",
+    "main": "lib/index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "npm test -- --watch",
+        "build": "tsc",
+        "watch": "tsc --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KyLoc20/mymui-react-select.git"
+    },
+    "keywords": [
+        "ui",
+        "react"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/KyLoc20/mymui-react-select/issues"
+    },
+    "homepage": "https://github.com/KyLoc20/mymui-react-select#readme",
+    "peerDependencies": {
+        "react": ">=17",
+        "react-dom": ">=17"
+    },
+    "dependencies": {
+        "@types/react": ">=17",
+        "@types/react-dom": ">=17",
+        "react": ">=17",
+        "react-dom": ">=17"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.4.0",
+        "@typescript-eslint/eslint-plugin": "^5.9.0",
+        "@typescript-eslint/parser": "^5.9.0",
+        "eslint": "^8.6.0",
+        "jest": "^27.4.5",
+        "prettier": "^2.5.1",
+        "rollup": "^2.77.2",
+        "ts-jest": "^27.1.2",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.4",
+        "watch": "^1.0.2"
+    }
+}
