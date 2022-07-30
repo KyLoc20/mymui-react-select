@@ -1,3 +1,4 @@
+import { defineConfig } from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
@@ -5,36 +6,42 @@ import { terser } from 'rollup-plugin-terser';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import dts from 'rollup-plugin-dts'
-const packageJson = require('./package.json');
-export default [{
-    input: 'lib/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: "esm" }],
-    plugins: [dts()],
-}, {
-    input: 'lib/index.js',
-    output: [{
-            file: packageJson.main,
-            format: 'cjs',
-            sourcemap: true,
-            name: 'mymui-react-select'
+import pkg from './package.json';
+// const packageJson = require('./package.json');
+const name = 'mymui-react-select';
+export default defineConfig([{
+            input: 'types/index.d.ts',
+            output: [{ file: 'dist/index.d.ts', format: "esm" }],
+            plugins: [dts()],
         },
         {
-            file: packageJson.module,
-            format: 'esm',
-            sourcemap: true
+            input: 'src/index.ts',
+            output: [{
+                    file: pkg.main,
+                    format: 'cjs',
+                    sourcemap: true,
+                    name
+                },
+                {
+                    file: pkg.module,
+                    format: 'esm',
+                    sourcemap: true,
+                    name
+                }
+            ],
+            plugins: [
+                typescript({ tsconfig: './tsconfig.json', sourceMap: true }),
+                postcss({ extensions: [".css"] }),
+                resolve(),
+                commonjs(),
+                external(),
+                terser()
+            ]
         }
-    ],
-    plugins: [
-        typescript({ tsconfig: './tsconfig.json' }),
-        postcss({ extensions: [".css"] }),
-        external(),
-        resolve(),
-        commonjs(),
-        terser()
-    ]
-}]
-// import dts from 'rollup-plugin-dts'
-// import esbuild from 'rollup-plugin-esbuild'
+
+    ])
+    // import dts from 'rollup-plugin-dts'
+    // import esbuild from 'rollup-plugin-esbuild'
 
 // const name = require('./package.json').main.replace(/\.js$/, '')
 
