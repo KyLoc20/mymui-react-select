@@ -12,6 +12,8 @@
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
+        "declarationDir": "types",
+        "emitDeclarationOnly": true
     },
     "include": ["src"],
     "exclude": ["node-modules", "**/__tests__/*"]
