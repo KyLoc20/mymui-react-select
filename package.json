@@ -10,7 +10,7 @@
         "test:watch": "npm test -- --watch",
         "build": "rimraf build && rimraf types && tsc",
         "build:watch": "tsc --watch",
-        "build:rollup": "rimraf dist && rollup -c rollup.config.js"
+        "build:rollup": "rimraf build && rimraf types && tsc && rimraf dist && rollup -c rollup.config.js"
     },
     "repository": {
         "type": "git",

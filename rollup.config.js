@@ -10,11 +10,6 @@ import pkg from './package.json';
 // const packageJson = require('./package.json');
 const name = 'mymui-react-select';
 export default defineConfig([{
-            input: 'types/index.d.ts',
-            output: [{ file: 'dist/index.d.ts', format: "esm" }],
-            plugins: [dts()],
-        },
-        {
             input: 'src/index.ts',
             output: [{
                     file: pkg.main,
@@ -37,7 +32,12 @@ export default defineConfig([{
                 external(),
                 terser()
             ]
-        }
+        }, {
+            input: 'types/index.d.ts',
+            output: [{ file: 'dist/index.d.ts', format: "esm" }],
+            plugins: [dts()],
+        },
+
 
     ])
     // import dts from 'rollup-plugin-dts'
